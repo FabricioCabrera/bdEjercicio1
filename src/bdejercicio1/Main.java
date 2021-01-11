@@ -33,7 +33,7 @@ public class Main {
         
         /*Persona edita= new Persona("1145454550",2);
          if (personabd.editaPersona(edita)) {
-            System.out.println("Persona edita con éxito");
+            System.out.println("Persona editada con éxito");
         } else {
             System.out.println("Error al editar");
         }*/
