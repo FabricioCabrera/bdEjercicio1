@@ -9,20 +9,20 @@ public class ModelTableProveedor extends AbstractTableModel {
 
     //Arreglo con el nombre de las columnas
     public String[] m_colNames = {"Ruc", "Razon Social", " Tipo Actividad", "Nombre representante legal",
-        "Apellido representante legal", " Correo", " Teléfono"};
+        "Apellido representante legal", " Teléfono", "Correo"};
 
-    public List<Proveedor> proveedores;
+    public List<Proveedor> proveedor;
     private final GestionContable gcontable;
 
     public ModelTableProveedor(List<Proveedor> proveedor, GestionContable gcontable) {
-        this.proveedores = proveedor;
+        this.proveedor = proveedor;
         this.gcontable = gcontable;
     }
 
     //Determina el número de filas que tengo en mi tabla
     @Override
     public int getRowCount() {
-        return proveedores.size();
+        return proveedor.size();
     }
 
     //Determina el número de columnas que tengo en mi tabla
@@ -33,7 +33,7 @@ public class ModelTableProveedor extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Proveedor persona = proveedores.get(rowIndex);
+        Proveedor persona = proveedor.get(rowIndex);
         switch (columnIndex) {
             case 0:
                 return persona.getRuc();
@@ -46,9 +46,9 @@ public class ModelTableProveedor extends AbstractTableModel {
             case 4:
                 return persona.getApellido_representante_legal();
             case 5:
-                return persona.getCorreo();
-            case 6:
                 return persona.getTelefono();
+            case 6:
+                return persona.getCorreo();
         }
         return new String();
     }
@@ -61,16 +61,18 @@ public class ModelTableProveedor extends AbstractTableModel {
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        gcontable.clickProveedor(proveedores.get(rowIndex));
+        gcontable.clickProveedor(proveedor.get(rowIndex));
         return super.isCellEditable(rowIndex, columnIndex); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public List<Proveedor> getProveedores() {
-        return proveedores;
+    public List<Proveedor> getProveedor() {
+        return proveedor;
     }
 
-    public void setProveedores(List<Proveedor> proveedores) {
-        this.proveedores = proveedores;
+    public void setProveedor(List<Proveedor> proveedor) {
+        this.proveedor = proveedor;
     }
+
+  
 
 }

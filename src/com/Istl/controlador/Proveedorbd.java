@@ -19,7 +19,7 @@ public class Proveedorbd {
         Connection con = null;
 
         String sql = "INSERT INTO bdejercicio1.proveedores (idproveedores,ruc, razon_social, tipo_actividad,"
-                + " nombre_representante_legal, apellido_representante_legal, correo, telefono) "
+                + " nombre_representante_legal, apellido_representante_legal,telefono,correo) "
                 + "VALUES ('" + String.valueOf(proveedor.getIdproveedores()) + "','"
                 + "" + proveedor.getRuc() + "', '"
                 + "" + proveedor.getRazon_social() + "', '"
@@ -116,8 +116,8 @@ public class Proveedorbd {
                 c.setTipoActividad(rs.getString(4));
                 c.setNombre_representante_legal(rs.getString(5));
                 c.setApellido_representante_legal(rs.getString(6));
-                c.setCorreo(rs.getString(7));
-                c.setTelefono(rs.getString(8));
+                c.setTelefono(rs.getString(7));
+                c.setCorreo(rs.getString(8));
                 listaPersonas.add(c);
             }
             stm.close();
@@ -151,8 +151,8 @@ public class Proveedorbd {
                 c.setTipoActividad(rs.getString(4));
                 c.setNombre_representante_legal(rs.getString(5));
                 c.setApellido_representante_legal(rs.getString(6));
-                c.setCorreo(rs.getString(7));
-                c.setTelefono(rs.getString(8));
+                c.setTelefono(rs.getString(7));
+                c.setCorreo(rs.getString(8));
                 listaPersonas.add(c);
             }
             stm.close();
