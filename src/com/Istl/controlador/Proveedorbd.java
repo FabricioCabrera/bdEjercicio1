@@ -19,7 +19,7 @@ public class Proveedorbd {
         Connection con = null;
 
         String sql = "INSERT INTO bdejercicio1.proveedores (idproveedores,ruc, razon_social, tipo_actividad,"
-                + " nombre_representante_legal, apellido_representante_legal,telefono,correo) "
+                + " nombre_representante_legal, apellido_representante_legal,correo, telefono) "
                 + "VALUES ('" + String.valueOf(proveedor.getIdproveedores()) + "','"
                 + "" + proveedor.getRuc() + "', '"
                 + "" + proveedor.getRazon_social() + "', '"
@@ -102,7 +102,7 @@ public class Proveedorbd {
         //Sentencia de JDBC para obtener valores de las base de datos
         ResultSet rs = null;
         String sql = "Select * from bdejercicio1.proveedores";
-        List<Proveedor> listaPersonas = new ArrayList<>();
+        List<Proveedor> listaProveedores = new ArrayList<>();
         try {
             Conexiónbd co = new Conexiónbd();
             con = co.Conectar();
@@ -118,7 +118,7 @@ public class Proveedorbd {
                 c.setApellido_representante_legal(rs.getString(6));
                 c.setTelefono(rs.getString(7));
                 c.setCorreo(rs.getString(8));
-                listaPersonas.add(c);
+                listaProveedores.add(c);
             }
             stm.close();
             rs.close();
@@ -126,7 +126,7 @@ public class Proveedorbd {
         } catch (SQLException ex) {
             System.out.println("Error de clase editar" + ex.getLocalizedMessage());
         }
-        return listaPersonas;
+        return listaProveedores;
     }
 
     public List<Proveedor> obtener(String subSql) {
@@ -137,7 +137,7 @@ public class Proveedorbd {
         //Sentencia de JDBC para obtener valores de las base de datos
         ResultSet rs = null;
         String sql = "Select * from bdejercicio1.proveedores where " + subSql;
-        List<Proveedor> listaPersonas = new ArrayList<>();
+        List<Proveedor> listaProveedores = new ArrayList<>();
         try {
             Conexiónbd co = new Conexiónbd();
             con = co.Conectar();
@@ -153,7 +153,7 @@ public class Proveedorbd {
                 c.setApellido_representante_legal(rs.getString(6));
                 c.setTelefono(rs.getString(7));
                 c.setCorreo(rs.getString(8));
-                listaPersonas.add(c);
+                listaProveedores.add(c);
             }
             stm.close();
             rs.close();
@@ -161,7 +161,7 @@ public class Proveedorbd {
         } catch (SQLException ex) {
             System.out.println("Error de clase editar" + ex.getLocalizedMessage());
         }
-        return listaPersonas;
+        return listaProveedores;
     }
 
     public Proveedor buscar(String ruc) {

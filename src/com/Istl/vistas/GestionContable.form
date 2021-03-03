@@ -27,7 +27,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="tabGeneral" pref="836" max="32767" attributes="0"/>
+              <Component id="tabGeneral" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -395,7 +395,7 @@
                           <Group type="102" attributes="0">
                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="comboParamtroBusquedaProveedor" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboParametroBusquedaProveedor" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="txtParametroBusquedaProveedor" min="-2" pref="378" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -418,7 +418,7 @@
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="comboParamtroBusquedaProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboParametroBusquedaProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtParametroBusquedaProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnBuscarProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -614,6 +614,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Eliminar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnElimnarProveedoresActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnLimpiarProveedores">
                   <Properties>
@@ -643,7 +646,7 @@
                 <Property name="text" type="java.lang.String" value="Buscador"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="comboParamtroBusquedaProveedor">
+            <Component class="javax.swing.JComboBox" name="comboParametroBusquedaProveedor">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
@@ -688,13 +691,13 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblBuscarCliente2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="comboParametroBusqueda2" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboParametroBusquedaI" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtParametroBusqueda2" max="32767" attributes="0"/>
+                              <Component id="txtParametroBusquedaI" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="panelCuerpoRegistro2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jScrollCliente2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jScrollCliente2" alignment="0" pref="675" max="32767" attributes="0"/>
                           <Component id="txtTituloCliente2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="panelCuerpoRegistro2" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="78" max="32767" attributes="0"/>
                   </Group>
@@ -710,8 +713,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblBuscarCliente2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="comboParametroBusqueda2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtParametroBusqueda2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboParametroBusquedaI" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtParametroBusquedaI" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollCliente2" pref="272" max="32767" attributes="0"/>
@@ -733,7 +736,7 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Cuerpo Registro"/>
+                    <TitledBorder title="Producto"/>
                   </Border>
                 </Property>
               </Properties>
@@ -762,7 +765,7 @@
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="96" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btnGuardar2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                                   <Component id="btnEditar2" min="-2" max="-2" attributes="0"/>
@@ -820,7 +823,7 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="lblCedula2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="CodigoPro:"/>
+                    <Property name="text" type="java.lang.String" value="Codigo Prod:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblNombre2">
@@ -911,10 +914,10 @@
             </Container>
             <Component class="javax.swing.JLabel" name="lblBuscarCliente2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Buscar Persona:"/>
+                <Property name="text" type="java.lang.String" value="Buscar Productos:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="comboParametroBusqueda2">
+            <Component class="javax.swing.JComboBox" name="comboParametroBusquedaI">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
@@ -927,9 +930,9 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtParametroBusqueda2">
+            <Component class="javax.swing.JTextField" name="txtParametroBusquedaI">
               <Events>
-                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtParametroBusqueda2KeyReleased"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtParametroBusquedaIKeyReleased"/>
               </Events>
             </Component>
           </SubComponents>
