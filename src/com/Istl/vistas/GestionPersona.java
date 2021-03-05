@@ -96,15 +96,7 @@ public class GestionPersona {
     }
 
     public Persona guardarEditar() {
-        if (txtCedula.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(frameGestionContable, "El campo cedula no tiene datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            txtCedula.requestFocus();// Sirve para ubicar el cursor en un campo vacio.
-            return null;
-        }
-        if (!utilidades.validadorDeCedula(txtCedula.getText())) {
-            JOptionPane.showMessageDialog(frameGestionContable, "la cedula ingresada no es valida", "ERROR", JOptionPane.ERROR_MESSAGE);
-            return null;
-        }
+       
         if (txtNombres.getText().isEmpty()) {
             JOptionPane.showMessageDialog(frameGestionContable, "El campo nombres no tiene datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
             txtNombres.requestFocus();

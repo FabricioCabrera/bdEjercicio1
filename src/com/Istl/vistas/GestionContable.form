@@ -260,6 +260,9 @@
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="Ingrese una c&#xe9;dula correcta."/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCedulaFocusLost"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtNombres">
                 </Component>
@@ -268,6 +271,9 @@
                 <Component class="javax.swing.JTextField" name="txtDireccion">
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtTelefono">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTelefonoKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtCorreo">
                 </Component>
@@ -363,6 +369,9 @@
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="txtParametroBusqueda">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Para realizar la b&#xfa;squeda ingrese un par&#xe1;metro"/>
+              </Properties>
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtParametroBusquedaKeyReleased"/>
               </Events>

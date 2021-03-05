@@ -16,14 +16,14 @@ public class Personabd {
         Statement stm = null;
         Connection con = null;
 
-        String sql = "INSERT INTO bdejercicio1.persona (idpersona,cedula, nombres, apellidos, dirección, correo, teléfono) "
+        String sql = "INSERT INTO bdejercicio1.persona (idpersona,cedula, nombres, apellidos, direccion, correo, telefono) "
                 + "VALUES ('" + String.valueOf(persona.getIdpersona()) + "','"
                 + "" + persona.getCedula() + "', '"
                 + "" + persona.getNombres() + "', '"
                 + "" + persona.getApellidos() + "', '"
                 + "" + persona.getDireccion() + "', '"
-                + "" + persona.getCorreo() + "', '"
-                + "" + persona.getTelefono() + "')";
+                + "" + persona.getCorreo() +"', '" 
+                + "" + persona.getTelefono() +"')" ;
         try {
             Conexiónbd co = new Conexiónbd();
             con = co.Conectar();
@@ -65,7 +65,8 @@ public class Personabd {
         Connection con = null;
 
         //Código para editar solo el número de cédula según el idpersona
-        String sql = ("UPDATE persona SET cedula=" + edita.getCedula() + "  WHERE (idpersona=" + edita.getIdpersona() + ")");
+        String sql = ("UPDATE persona SET cedula=" + edita.getCedula() + " , nombres='"+edita.getNombres()+ "', apellidos='"+edita.getApellidos()+"'"
+                + " , direccion='"+edita.getDireccion()+"' , correo='"+edita.getCorreo()+"' , telefono= '"+edita.getTelefono()+"'  WHERE (idpersona=" + edita.getIdpersona()+")");
         try {
             Conexiónbd co = new Conexiónbd();
             con = co.Conectar();
@@ -86,7 +87,7 @@ public class Personabd {
         Statement stm = null;
         //Sentencia de JDBC para obtener valores de la base de datos.
         ResultSet rs = null;
-        String sql = "SELECT * FROM persona;";
+        String sql = "SELECT * FROM persona";
         List<Persona> listaPersonas = new ArrayList<>();
         try {
             co = new Conexiónbd().Conectar();
@@ -119,7 +120,6 @@ public class Personabd {
         //Sentencia de JDBC para obtener valores de la base de datos.
         ResultSet rs = null;
         String sql = "SELECT * FROM persona where " + subSql;
-        System.out.println("SQL: "+ "SELECT * FROM persona where " + subSql);
         List<Persona> listaPersonas = new ArrayList<>();
         try {
             co = new Conexiónbd().Conectar();

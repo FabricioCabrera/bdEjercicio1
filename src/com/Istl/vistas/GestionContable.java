@@ -176,6 +176,17 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         lblCorreo.setText("Correo:");
 
         txtCedula.setToolTipText("Ingrese una cédula correcta.");
+        txtCedula.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCedulaFocusLost(evt);
+            }
+        });
+
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
 
         btnBuscarCedula.setText("Buscar");
         btnBuscarCedula.setToolTipText("Buscar persona por cédula.");
@@ -317,6 +328,7 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
 
         comboParametroBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cédula", "Nombres", "Telefono" }));
 
+        txtParametroBusqueda.setToolTipText("Para realizar la búsqueda ingrese un parámetro");
         txtParametroBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtParametroBusquedaKeyReleased(evt);
@@ -784,8 +796,8 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
             if (controladorPersona.editaPersona(personaEditarLocal)) {
                 JOptionPane.showMessageDialog(rootPane, "Persona editada con exito del sitema.");
                 gestionPersona.limpiarCamposPersona();
-                personaEditarEliminar = null;
                 tabla();
+                personaEditarEliminar = null;
 
             } else {
                 JOptionPane.showMessageDialog(rootPane, "No se puede editar la persona", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -971,6 +983,23 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
             JOptionPane.showMessageDialog(rootPane, "No hay producto seleccionado para eliminar.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnElimnarProveedoresActionPerformed
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTelefonoKeyTyped
+
+    private void txtCedulaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCedulaFocusLost
+        // TODO add your handling code here:
+         if (txtCedula.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo cédula no tiene datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            txtCedula.requestFocus();// Sirve para ubicar el cursor en un campo vacio.       
+        }else  if (!utilidades.validadorDeCedula(txtCedula.getText())) {
+            JOptionPane.showMessageDialog(this, "la cédula ingresada no es valida", "ERROR", JOptionPane.ERROR_MESSAGE);
+            
+        }
+    }//GEN-LAST:event_txtCedulaFocusLost
 
     // <editor-fold defaultstate="collapsed" desc="Main">
     /**
