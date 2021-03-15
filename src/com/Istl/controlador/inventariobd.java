@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class inventariobd {
+
     //Creamos el método para guardar un producto nuevo
     public boolean Crear(inventario producto) {
         boolean registrar = false;
@@ -17,18 +18,18 @@ public class inventariobd {
         Statement stm = null;
         //Conexión con la base de datos
         Connection con = null;
-        
 
-        String sql = "INSERT INTO `bdejercicio1`.`inventario` (`idinventario`, `codigo_pro`, `descripcion`"
-                + ", `precios_compra`, `precio_venta`, `can_productos`)"
+        String sql = "INSERT INTO `bdejercicio1`.`inventario` (`idinventario`, `codigo_pro`,`can_productos`, `descripcion`"
+                + ", `precio_compra_sin_iva`, `precio_compra_con_iva`, `precio_mayorista`,`precio_cliente_fijo`,`precio_cliente_normal`)"
                 + "VALUES ('" + String.valueOf(producto.getIdinventario()) + "','"
-                
                 + "" + producto.getCodigo_pro() + "','"
-                + "" + producto.getDescripcion()+ "','"
-                + "" + producto.getPrecios_compra() + "','"
-                + "" + producto.getPrecio_venta() + "','"
-                + "" + producto.getCan_productos() +"')";
-
+                + "" + producto.getCan_productos() + "','"
+                + "" + producto.getDescripcion() + "','"
+                + "" + String.valueOf(producto.getPrecio_siniva())+ "','"
+                + "" + String.valueOf(producto.getPrecio_coniva()) + "','"
+                + "" + String.valueOf(producto.getPrecio_mayorista()) + "','"
+                + "" + String.valueOf(producto.getPrecio_clifijo()) + "','"
+                + "" + String.valueOf(producto.getPrecio_clinormal()) + "')";
         try {
             //Es una instancia de la conexión previamente creada
             Conexiónbd co = new Conexiónbd();
@@ -44,6 +45,7 @@ public class inventariobd {
         }
         return registrar;
     }
+
     //Creamos el método para eliminar un producto
     public boolean eliminar(inventario producto) {
         //conexión con la base de datos
@@ -64,6 +66,7 @@ public class inventariobd {
         }
         return eliminar;
     }
+
     //Creamos el método para actualizar un producto
     public boolean actualizar(inventario producto) {
         //conexión con la base de datos
@@ -75,9 +78,10 @@ public class inventariobd {
         boolean actualizar = false;
 
         //Código para editar solo el número de cedula según el idpersona
-        String sql = "UPDATE inventario SET codigo_pro= '" + producto.getCodigo_pro() + "',descripcion= '" + producto.getDescripcion() + "',precios_compra= '" + producto.getPrecios_compra() + ""
-                + "', precio_venta= '" + producto.getPrecio_venta() + "',can_productos= '" + producto.getCan_productos() + ""
-                  + "'  WHERE (idinventario=" + producto.getIdinventario() + ")";
+        String sql = "UPDATE inventario SET codigo_pro= '" + producto.getCodigo_pro() + "',can_productos= '" + producto.getCan_productos() + "',descripcion= '" + producto.getDescripcion() + "',precio_compra_sin_iva= '" + producto.getPrecio_siniva() + ""
+                + "',precio_compra_con_iva= '" + producto.getPrecio_coniva()+"',precio_mayorista= '" + producto.getPrecio_mayorista() + ""
+                + "', precio_cliente_fijo= '" + producto.getPrecio_clifijo() + "',precio_cliente_normal= '" + producto.getPrecio_clinormal() + ""
+                + "'  WHERE (idinventario=" + producto.getIdinventario() + ")";
         try {
             Conexiónbd co = new Conexiónbd();
             con = co.Conectar();
@@ -89,6 +93,7 @@ public class inventariobd {
         }
         return actualizar;
     }
+
     //Creamos el método para obtener lista de productos en una Arraylist
     public List<inventario> obtener() {
         //conexión con la base de datos
@@ -106,12 +111,15 @@ public class inventariobd {
             rs = stm.executeQuery(sql);
             while (rs.next()) {
                 inventario c = new inventario();
-                c.setIdinventario(rs.getInt(1));
-                c.setCodigo_pro(rs.getString(2));
-                c.setDescripcion(rs.getString(3));
-                c.setPrecios_compra(rs.getString(4));
-                c.setPrecio_venta(rs.getString(5));
-                c.setCan_productos(rs.getString(6));
+                c.setIdinventario(rs.getInt("idinventario"));
+                c.setCodigo_pro(rs.getString("codigo_pro"));
+                c.setCan_productos(rs.getString("can_productos"));
+                c.setDescripcion(rs.getString("descripcion"));
+                c.setPrecio_siniva(rs.getDouble("precio_compra_sin_iva"));
+                c.setPrecio_coniva(rs.getDouble("precio_compra_con_iva"));
+                c.setPrecio_mayorista(rs.getDouble("precio_mayorista"));
+                c.setPrecio_clifijo(rs.getDouble("precio_cliente_fijo"));
+                c.setPrecio_clinormal(rs.getDouble("precio_cliente_normal"));
                 listaProductos.add(c);
             }
             stm.close();
@@ -122,6 +130,7 @@ public class inventariobd {
         }
         return listaProductos;
     }
+
     //Creamos el método para obtener lista de productos en una Arraylist con un subsentenciasql
     public List<inventario> obtener(String subSql) {
         //conexión con la base de datos
@@ -138,13 +147,16 @@ public class inventariobd {
             stm = con.createStatement();
             rs = stm.executeQuery(sql);
             while (rs.next()) {
-                inventario c = new inventario();
+               inventario c = new inventario();
                 c.setIdinventario(rs.getInt(1));
                 c.setCodigo_pro(rs.getString(2));
-                c.setDescripcion(rs.getString(3));
-                c.setPrecios_compra(rs.getString(4));
-                c.setPrecio_venta(rs.getString(5));
-                c.setCan_productos(rs.getString(6));
+                c.setCan_productos(rs.getString(3));
+                c.setDescripcion(rs.getString(4));
+                c.setPrecio_siniva(rs.getDouble(5));
+                c.setPrecio_coniva(rs.getDouble(6));
+                c.setPrecio_mayorista(rs.getDouble(7));
+                c.setPrecio_clifijo(rs.getDouble(8));
+                c.setPrecio_clinormal(rs.getDouble(9));
                 listaProductos.add(c);
             }
             stm.close();
@@ -156,7 +168,7 @@ public class inventariobd {
         return listaProductos;
     }
 
-     public inventario buscar(String ruc) {
+    public inventario buscar(String ruc) {
 
         //conexión con la base de datos
         Connection con = null;
@@ -176,10 +188,13 @@ public class inventariobd {
                 c = new inventario();
                 c.setIdinventario(rs.getInt(1));
                 c.setCodigo_pro(rs.getString(2));
-                c.setDescripcion(rs.getString(3));
-                c.setPrecios_compra(rs.getString(4));
-                c.setPrecio_venta(rs.getString(5));
-                c.setCan_productos(rs.getString(6));
+                c.setCan_productos(rs.getString(3));
+                c.setDescripcion(rs.getString(4));
+                c.setPrecio_siniva(rs.getDouble(5));
+                c.setPrecio_coniva(rs.getDouble(6));
+                c.setPrecio_mayorista(rs.getDouble(7));
+                c.setPrecio_clifijo(rs.getDouble(8));
+                c.setPrecio_clinormal(rs.getDouble(9));
             }
             stm.close();
             rs.close();

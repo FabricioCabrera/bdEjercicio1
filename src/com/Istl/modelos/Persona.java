@@ -1,5 +1,7 @@
 package com.Istl.modelos;
 
+import java.sql.Date;
+
 public class Persona {
 
     private int idpersona;
@@ -9,24 +11,34 @@ public class Persona {
     private String direccion;
     private String correo;
     private String telefono;
+    private Date fecha_registro;
+    private String genero;
 
-    public Persona(int idpersona, String cedula, String nombres, String apellidos, String dirección, String correo, String teléfono) {
+    public Persona(int idpersona, String cedula, String nombres, String apellidos, String direccion, 
+            String correo, String telefono, Date fecha_registro, String genero) {
         this.idpersona = idpersona;
         this.cedula = cedula;
         this.nombres = nombres;
         this.apellidos = apellidos;
-        this.direccion = dirección;
+        this.direccion = direccion;
         this.correo = correo;
-        this.telefono = teléfono;
+        this.telefono = telefono;
+        this.fecha_registro = fecha_registro;
+        this.genero = genero;
     }
 
-    public Persona(String cedula, String nombres, String apellidos, String dirección, String correo, String teléfono, int idpersona) {
+    
+
+    public Persona(String cedula, String nombres, String apellidos, String dirección, String correo, 
+            String teléfono,Date fecha_registro, String genero, int idpersona) {
         this.cedula = cedula;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.direccion = dirección;
         this.correo = correo;
         this.telefono = teléfono;
+        this.fecha_registro = fecha_registro;
+        this.genero = genero;
         this.idpersona = idpersona;
     }
 
@@ -93,6 +105,23 @@ public class Persona {
         this.telefono = telefono;
     }
 
+    public Date getFecha_registro() {
+        return fecha_registro;
+    }
+
+    public void setFecha_registro(Date fecha_registro) {
+        this.fecha_registro = fecha_registro;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    
     @Override
     public String toString() {
         return "Persona{" + "idpersona=" + idpersona + ", c\u00e9dula=" + cedula + ", nombres=" + nombres + ", apellidos=" + apellidos + ", direcci\u00f3n=" + direccion + ", correo=" + correo + ", tel\u00e9fono=" + telefono + '}';

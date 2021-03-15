@@ -1,5 +1,7 @@
 package com.Istl.modelos;
 
+import java.sql.Date;
+
 public class Proveedor {
 
     private int idproveedores;
@@ -10,8 +12,12 @@ public class Proveedor {
     private String apellido_representante_legal;
     private String telefono;
     private String correo;
+    private String direccion;
+    private Date fecha_registro;
 
-    public Proveedor(int idproveedores, String ruc, String razon_social, String tipoActividad, String nombre_representante_legal, String apellido_representante_legal, String telefono, String correo) {
+    public Proveedor(int idproveedores, String ruc, String razon_social, String tipoActividad, 
+            String nombre_representante_legal, String apellido_representante_legal, String telefono, 
+            String correo, String direccion, Date fecha_registro) {
         this.idproveedores = idproveedores;
         this.ruc = ruc;
         this.razon_social = razon_social;
@@ -20,15 +26,21 @@ public class Proveedor {
         this.apellido_representante_legal = apellido_representante_legal;
         this.telefono = telefono;
         this.correo = correo;
+        this.direccion = direccion;
+        this.fecha_registro = fecha_registro;
     }
 
-    public Proveedor(String ruc, String razon_social, String tipo_actividad, String nombre_representante_legal, String telefono, String correo, int idproveedores) {
+
+    public Proveedor(String ruc, String razon_social, String tipo_actividad, String nombre_representante_legal, 
+            String telefono, String correo, String direccion, Date fecha_registro, int idproveedores) {
         this.ruc = ruc;
         this.razon_social = razon_social;
         this.tipoActividad = tipo_actividad;
         this.nombre_representante_legal = nombre_representante_legal;
         this.telefono = telefono;
         this.correo = correo;
+        this.direccion = direccion;
+        this.fecha_registro = fecha_registro;
         this.idproveedores = idproveedores;
     }
 
@@ -102,6 +114,22 @@ public class Proveedor {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public Date getFecha_registro() {
+        return fecha_registro;
+    }
+
+    public void setFecha_registro(Date fecha_registro) {
+        this.fecha_registro = fecha_registro;
     }
 
     

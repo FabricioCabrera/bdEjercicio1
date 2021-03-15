@@ -19,7 +19,7 @@ public class Proveedorbd {
         Connection con = null;
 
         String sql = "INSERT INTO bdejercicio1.proveedores (idproveedores,ruc, razon_social, tipo_actividad,"
-                + " nombre_representante_legal, apellido_representante_legal,correo, telefono) "
+                + " nombre_representante_legal, apellido_representante_legal,correo, telefono, direccion) "
                 + "VALUES ('" + String.valueOf(proveedor.getIdproveedores()) + "','"
                 + "" + proveedor.getRuc() + "', '"
                 + "" + proveedor.getRazon_social() + "', '"
@@ -27,7 +27,8 @@ public class Proveedorbd {
                 + "" + proveedor.getNombre_representante_legal() + "', '"
                 + "" + proveedor.getApellido_representante_legal() + "', '"
                 + "" + proveedor.getCorreo() + "','"
-                + "" + proveedor.getTelefono() + "')";
+                + ""+ proveedor.getTelefono() + "','"
+                + "" + proveedor.getDireccion() + "')";
 
         try {
             //Es una instancia de la conexión previamente creada
@@ -79,7 +80,7 @@ public class Proveedorbd {
         //Código para editar solo el número de cedula según el idpersona
         String sql = "UPDATE proveedores SET ruc= '" + persona.getRuc() + "',razon_social= '" + persona.getRazon_social() + "',tipo_actividad= '" + persona.getTipoActividad() + ""
                 + "', nombre_representante_legal= '" + persona.getNombre_representante_legal() + "',apellido_representante_legal= '" + persona.getApellido_representante_legal() + ""
-                + "',correo= '" + persona.getCorreo() + "',telefono= '" + persona.getTelefono() + ""
+                + "',correo= '" + persona.getCorreo() + "',telefono= '" + persona.getTelefono() + "',direccion= '" + persona.getDireccion()+ ""
                 + "'  WHERE (idproveedores=" + persona.getIdproveedores() + ")";
         try {
             Conexiónbd co = new Conexiónbd();
@@ -118,6 +119,7 @@ public class Proveedorbd {
                 c.setApellido_representante_legal(rs.getString(6));
                 c.setTelefono(rs.getString(7));
                 c.setCorreo(rs.getString(8));
+                c.setDireccion(rs.getString(9));
                 listaProveedores.add(c);
             }
             stm.close();
@@ -153,6 +155,7 @@ public class Proveedorbd {
                 c.setApellido_representante_legal(rs.getString(6));
                 c.setTelefono(rs.getString(7));
                 c.setCorreo(rs.getString(8));
+                c.setDireccion(rs.getString(9));
                 listaProveedores.add(c);
             }
             stm.close();
@@ -190,6 +193,7 @@ public class Proveedorbd {
                 c.setApellido_representante_legal(rs.getString(6));
                 c.setCorreo(rs.getString(7));
                 c.setTelefono(rs.getString(8));
+                c.setDireccion(rs.getString(9));
             }
             stm.close();
             rs.close();

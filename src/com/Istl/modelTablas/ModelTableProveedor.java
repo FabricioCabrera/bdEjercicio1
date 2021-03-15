@@ -9,7 +9,7 @@ public class ModelTableProveedor extends AbstractTableModel {
 
     //Arreglo con el nombre de las columnas
     public String[] m_colNames = {"Ruc", "Razon Social", " Tipo Actividad", "Nombre representante legal",
-        "Apellido representante legal", " Teléfono", "Correo"};
+        "Apellido representante legal", " Teléfono", "Correo","Dirección"};
 
     public List<Proveedor> proveedor;
     private final GestionContable gcontable;
@@ -49,6 +49,8 @@ public class ModelTableProveedor extends AbstractTableModel {
                 return persona.getTelefono();
             case 6:
                 return persona.getCorreo();
+            case 7:
+                return persona.getDireccion();
         }
         return new String();
     }

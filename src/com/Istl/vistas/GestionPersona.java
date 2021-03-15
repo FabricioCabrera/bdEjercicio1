@@ -7,6 +7,7 @@ package com.Istl.vistas;
 
 import com.Istl.modelos.Persona;
 import com.Istl.utilidades.Utilidades;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -23,16 +24,19 @@ public class GestionPersona {
     private JTextField txtDireccion;
     private JTextField txtCorreo;
     private JTextField txtTelefono;
+    private JComboBox comboGenero;
     private Utilidades utilidades;
     private JFrame frameGestionContable;
 
-    public GestionPersona(JTextField txtCedula, JTextField txtNombres, JTextField txtApellidos, JTextField txtDireccion, JTextField txtCorreo, JTextField txtTelefono, Utilidades utilidades, JFrame frameGestionContable) {
+    public GestionPersona(JTextField txtCedula, JTextField txtNombres, JTextField txtApellidos, JTextField txtDireccion, JTextField txtCorreo, 
+            JTextField txtTelefono, JComboBox comboGenero, Utilidades utilidades, JFrame frameGestionContable) {
         this.txtCedula = txtCedula;
         this.txtNombres = txtNombres;
         this.txtApellidos = txtApellidos;
         this.txtDireccion = txtDireccion;
         this.txtCorreo = txtCorreo;
         this.txtTelefono = txtTelefono;
+        this.comboGenero = comboGenero;
         this.utilidades = utilidades;
         this.frameGestionContable = frameGestionContable;
     }
@@ -85,6 +89,14 @@ public class GestionPersona {
         this.txtTelefono = txtTelefono;
     }
 
+    public JComboBox getComboGenero() {
+        return comboGenero;
+    }
+
+    public void setComboGenero(JComboBox comboGenero) {
+        this.comboGenero = comboGenero;
+    }
+
     public void limpiarCamposPersona() {
         txtCedula.setText("");
         txtNombres.setText("");
@@ -92,7 +104,8 @@ public class GestionPersona {
         txtDireccion.setText("");
         txtCorreo.setText("");
         txtTelefono.setText("");
-        txtCedula.requestFocus();
+        comboGenero.addItem(getComboGenero());
+       // txtCedula.requestFocus();
     }
 
     public Persona guardarEditar() {
@@ -138,8 +151,8 @@ public class GestionPersona {
         persona.setApellidos(txtApellidos.getText());
         persona.setDireccion(txtDireccion.getText());
         persona.setTelefono(txtTelefono.getText());
-
         persona.setCorreo(txtCorreo.getText());
+        persona.setGenero(comboGenero.getSelectedItem().toString());
         return persona;
     }
 

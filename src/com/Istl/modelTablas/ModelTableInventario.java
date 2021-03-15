@@ -8,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
 public class ModelTableInventario extends AbstractTableModel {
 
     //Arreglo con el nombre de las columnas
-    public String[] m_colNames = {"Codigo producto", "Descripcion", " Precios compra", "Precio venta", " Cantidad productos"};
+    public String[] m_colNames = {"Cód Prod", " Cant prod","Descripcion","Precio siniva"," Precio coniva", " Precio mayorista", " Precio clifijo" ," Precio clinormal"};
 
     public List<inventario> inventario;
     private final GestionContable gcontable;
@@ -37,13 +37,19 @@ public class ModelTableInventario extends AbstractTableModel {
             case 0:
                 return producto.getCodigo_pro();
             case 1:
-                return producto.getDescripcion();
-            case 2:
-                return producto.getPrecios_compra();
-            case 3:
-                return producto.getPrecio_venta();
-            case 4:
                 return producto.getCan_productos();
+            case 2:
+                return producto.getDescripcion();
+            case 3:
+                return producto.getPrecio_siniva();
+            case 4:
+                return producto.getPrecio_coniva();
+            case 5:
+                return producto.getPrecio_mayorista();
+            case 6:
+                return producto.getPrecio_clifijo();
+            case 7:
+                return producto.getPrecio_clinormal();
         }
         return new String();
     }

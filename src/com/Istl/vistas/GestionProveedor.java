@@ -24,10 +24,13 @@ public class GestionProveedor {
     private JTextField txtApellidosRepresentateLegalProveedores;
     private JTextField txtTelefonoProveedores;
     private JTextField txtCorrreoProveedores;
+    private JTextField txtDireccionProveedores;
     private Utilidades utilidades;
     private JFrame frameGestionProveedor;
 
-    public GestionProveedor(JTextField txtRucProveedores, JTextField txtRazonSocialProveedores, JTextField txtTipoActividadProveedores, JTextField txtNombreRepresentateLegalProveedores, JTextField txtApellidosRepresentateLegalProveedores, JTextField txtTelefonoProveedores, JTextField txtCorrreoProveedores, Utilidades utilidades, JFrame frameGestionProveedor) {
+    public GestionProveedor(JTextField txtRucProveedores, JTextField txtRazonSocialProveedores, JTextField txtTipoActividadProveedores,
+            JTextField txtNombreRepresentateLegalProveedores, JTextField txtApellidosRepresentateLegalProveedores, 
+            JTextField txtTelefonoProveedores, JTextField txtCorrreoProveedores, JTextField txtDireccionProveedores, Utilidades utilidades, JFrame frameGestionProveedor) {
         this.txtRucProveedores = txtRucProveedores;
         this.txtRazonSocialProveedores = txtRazonSocialProveedores;
         this.txtTipoActividadProveedores = txtTipoActividadProveedores;
@@ -35,6 +38,7 @@ public class GestionProveedor {
         this.txtApellidosRepresentateLegalProveedores = txtApellidosRepresentateLegalProveedores;
         this.txtTelefonoProveedores = txtTelefonoProveedores;
         this.txtCorrreoProveedores = txtCorrreoProveedores;
+        this.txtDireccionProveedores=  txtDireccionProveedores;
         this.utilidades = utilidades;
         this.frameGestionProveedor = frameGestionProveedor;
     }
@@ -95,6 +99,16 @@ public class GestionProveedor {
         this.txtCorrreoProveedores = txtCorrreoProveedores;
     }
 
+    public JTextField getTxtDireccionProveedores() {
+        return txtDireccionProveedores;
+    }
+
+    public void setTxtDireccionProveedores(JTextField txtDireccionProveedores) {
+        this.txtDireccionProveedores = txtDireccionProveedores;
+    }
+    
+    
+
     public Utilidades getUtilidades() {
         return utilidades;
     }
@@ -111,7 +125,7 @@ public class GestionProveedor {
         this.frameGestionProveedor = frameGestionProveedor;
     }
 
-    public void limpiarCamposProveedor() {
+     public void limpiarCamposProveedor() {
 
         txtRucProveedores.setText("");
         txtRazonSocialProveedores.setText("");
@@ -120,9 +134,9 @@ public class GestionProveedor {
         txtApellidosRepresentateLegalProveedores.setText("");
         txtTelefonoProveedores.setText("");
         txtCorrreoProveedores.setText("");
+        txtDireccionProveedores.setText("");
 
     }
-
     public Proveedor guardarEditar() {
         if (txtRucProveedores.getText().isEmpty()) {
             JOptionPane.showMessageDialog(frameGestionProveedor, "El campo ruc no tiene datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -170,6 +184,7 @@ public class GestionProveedor {
         proveedor.setApellido_representante_legal(txtApellidosRepresentateLegalProveedores.getText());
         proveedor.setTelefono(txtTelefonoProveedores.getText());
         proveedor.setCorreo(txtCorrreoProveedores.getText());
+        proveedor.setDireccion(txtDireccionProveedores.getText());
         return  proveedor;
     }
 
