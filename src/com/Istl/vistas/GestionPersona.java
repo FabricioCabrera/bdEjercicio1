@@ -7,6 +7,7 @@ package com.Istl.vistas;
 
 import com.Istl.modelos.Persona;
 import com.Istl.utilidades.Utilidades;
+import java.util.Date;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -28,7 +29,7 @@ public class GestionPersona {
     private Utilidades utilidades;
     private JFrame frameGestionContable;
 
-    public GestionPersona(JTextField txtCedula, JTextField txtNombres, JTextField txtApellidos, JTextField txtDireccion, JTextField txtCorreo, 
+    public GestionPersona(JTextField txtCedula, JTextField txtNombres, JTextField txtApellidos, JTextField txtDireccion, JTextField txtCorreo,
             JTextField txtTelefono, JComboBox comboGenero, Utilidades utilidades, JFrame frameGestionContable) {
         this.txtCedula = txtCedula;
         this.txtNombres = txtNombres;
@@ -104,12 +105,12 @@ public class GestionPersona {
         txtDireccion.setText("");
         txtCorreo.setText("");
         txtTelefono.setText("");
-        comboGenero.addItem(getComboGenero());
-       // txtCedula.requestFocus();
+        comboGenero.setSelectedIndex(0);
+        txtCedula.requestFocus();
     }
 
-    public Persona guardarEditar() {
-       
+    public Persona guardarEditar(boolean isEditar) {
+
         if (txtNombres.getText().isEmpty()) {
             JOptionPane.showMessageDialog(frameGestionContable, "El campo nombres no tiene datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
             txtNombres.requestFocus();
@@ -152,7 +153,13 @@ public class GestionPersona {
         persona.setDireccion(txtDireccion.getText());
         persona.setTelefono(txtTelefono.getText());
         persona.setCorreo(txtCorreo.getText());
-        persona.setGenero(comboGenero.getSelectedItem().toString());
+        persona.setGenero(comboGenero.getSelectedIndex());
+         if (isEditar) {
+            persona.setFecha_actualizacion(new Date());
+        }else{
+            persona.setFecha_registro(new Date());
+        }
+
         return persona;
     }
 

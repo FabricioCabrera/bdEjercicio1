@@ -78,9 +78,12 @@ public class Proveedorbd {
         boolean actualizar = false;
 
         //Código para editar solo el número de cedula según el idpersona
-        String sql = "UPDATE proveedores SET ruc= '" + persona.getRuc() + "',razon_social= '" + persona.getRazon_social() + "',tipo_actividad= '" + persona.getTipoActividad() + ""
-                + "', nombre_representante_legal= '" + persona.getNombre_representante_legal() + "',apellido_representante_legal= '" + persona.getApellido_representante_legal() + ""
-                + "',correo= '" + persona.getCorreo() + "',telefono= '" + persona.getTelefono() + "',direccion= '" + persona.getDireccion()+ ""
+        String sql = "UPDATE proveedores SET ruc= '" + persona.getRuc() + "',razon_social= '" + persona.getRazon_social() + ""
+                + "',tipo_actividad= '" + persona.getTipoActividad() + ""
+                + "', nombre_representante_legal= '" + persona.getNombre_representante_legal() + ""
+                + "',apellido_representante_legal= '" + persona.getApellido_representante_legal() + ""
+                + "',correo= '" + persona.getCorreo() + "',telefono= '" + persona.getTelefono() + ""
+                + "',direccion= '" + persona.getDireccion()+ ""
                 + "'  WHERE (idproveedores=" + persona.getIdproveedores() + ")";
         try {
             Conexiónbd co = new Conexiónbd();
@@ -168,7 +171,6 @@ public class Proveedorbd {
     }
 
     public Proveedor buscar(String ruc) {
-
         //conexión con la base de datos
         Connection con = null;
         //Interfáz de acceso a la base de datos

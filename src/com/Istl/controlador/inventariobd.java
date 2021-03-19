@@ -78,9 +78,12 @@ public class inventariobd {
         boolean actualizar = false;
 
         //Código para editar solo el número de cedula según el idpersona
-        String sql = "UPDATE inventario SET codigo_pro= '" + producto.getCodigo_pro() + "',can_productos= '" + producto.getCan_productos() + "',descripcion= '" + producto.getDescripcion() + "',precio_compra_sin_iva= '" + producto.getPrecio_siniva() + ""
-                + "',precio_compra_con_iva= '" + producto.getPrecio_coniva()+"',precio_mayorista= '" + producto.getPrecio_mayorista() + ""
-                + "', precio_cliente_fijo= '" + producto.getPrecio_clifijo() + "',precio_cliente_normal= '" + producto.getPrecio_clinormal() + ""
+        String sql = "UPDATE inventario SET codigo_pro= '" + producto.getCodigo_pro() + "',can_productos= '"
+                + "" + producto.getCan_productos() + "',descripcion= '" + producto.getDescripcion() + ""
+                + "',precio_compra_sin_iva= '" + producto.getPrecio_siniva() + ""
+                + "',precio_compra_con_iva= '" + producto.getPrecio_coniva()+"',precio_mayorista= '"
+                + "" + producto.getPrecio_mayorista()+ "', precio_cliente_fijo= '" + producto.getPrecio_clifijo() + ""
+                + "',precio_cliente_normal= '" + producto.getPrecio_clinormal() + ""
                 + "'  WHERE (idinventario=" + producto.getIdinventario() + ")";
         try {
             Conexiónbd co = new Conexiónbd();
@@ -168,8 +171,7 @@ public class inventariobd {
         return listaProductos;
     }
 
-    public inventario buscar(String ruc) {
-
+    public inventario buscar(String cod) {
         //conexión con la base de datos
         Connection con = null;
         //Interfáz de acceso a la base de datos
@@ -177,7 +179,7 @@ public class inventariobd {
         //Sentencia de JDBC para obtener valores de las base de datos
         ResultSet rs = null;
         inventario c = null;
-        String sql = "Select* from bdejercicio1.proveedores where ruc=" + ruc;
+        String sql = "Select* from bdejercicio1.proveedores where ruc=" + cod;
         try {
             Conexiónbd co = new Conexiónbd();
             con = co.Conectar();

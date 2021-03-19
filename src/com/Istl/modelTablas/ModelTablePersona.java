@@ -47,11 +47,9 @@ public class ModelTablePersona extends AbstractTableModel {
             case 5:
                 return persona.getTelefono();
             case 6:
-                return persona.getGenero();
-
-        }
-        return new String();
-    }
+                return persona.getGenero();}
+        
+        return new String();}
 
     //Sirve para definir los nombres de las columnas
     @Override

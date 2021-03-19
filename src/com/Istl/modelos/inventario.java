@@ -12,7 +12,9 @@ public class inventario {
     private double precio_clifijo;
     private double precio_clinormal;
 
-    public inventario(int idinventario, String codigo_pro, String can_productos, String descripcion, double precio_siniva, double precio_coniva, double precio_mayorista, double precio_clifijo, double precio_clinormal) {
+    public inventario(int idinventario, String codigo_pro, String can_productos, String descripcion, 
+            double precio_siniva, double precio_coniva, double precio_mayorista, 
+            double precio_clifijo, double precio_clinormal) {
         this.idinventario = idinventario;
         this.codigo_pro = codigo_pro;
         this.can_productos = can_productos;

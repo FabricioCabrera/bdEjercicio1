@@ -8,7 +8,8 @@ import javax.swing.table.AbstractTableModel;
 public class ModelTableInventario extends AbstractTableModel {
 
     //Arreglo con el nombre de las columnas
-    public String[] m_colNames = {"Cód Prod", " Cant prod","Descripcion","Precio siniva"," Precio coniva", " Precio mayorista", " Precio clifijo" ," Precio clinormal"};
+    public String[] m_colNames = {"Cód Prod", " Cant prod","Descripcion","Precio siniva"," Precio coniva", 
+        " Precio mayorista", " Precio clifijo" ," Precio clinormal"};
 
     public List<inventario> inventario;
     private final GestionContable gcontable;
