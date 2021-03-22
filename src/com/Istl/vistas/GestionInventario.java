@@ -186,6 +186,7 @@ public class GestionInventario {
         invent.setPrecio_mayorista(Double.parseDouble(txtPreciomayorista.getText()));
         invent.setPrecio_clifijo(Double.parseDouble(txtPrecioclifijo.getText()));
         invent.setPrecio_clinormal(Double.parseDouble(txtPrecioclinormal.getText()));
+        
         return invent;
     }
 

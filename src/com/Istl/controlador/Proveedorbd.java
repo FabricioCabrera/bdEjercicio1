@@ -4,12 +4,19 @@ import java.sql.Connection;
 import java.sql.Statement;
 import com.Istl.conexión.Conexiónbd;
 import com.Istl.modelos.Proveedor;
+import com.Istl.utilidades.Utilidades;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Proveedorbd {
+
+    public Utilidades utilidades;
+
+    public Proveedorbd() {
+        utilidades = new Utilidades();
+    }
 
     public boolean Crear(Proveedor proveedor) {
         boolean registrar = false;
@@ -18,17 +25,21 @@ public class Proveedorbd {
         //Conexión con la base de datos
         Connection con = null;
 
-        String sql = "INSERT INTO bdejercicio1.proveedores (idproveedores,ruc, razon_social, tipo_actividad,"
-                + " nombre_representante_legal, apellido_representante_legal,correo, telefono, direccion) "
+        String sql = "INSERT INTO bdejercicio1.proveedores (idproveedores,ruc, "
+                + "razon_social, tipo_actividad,"
+                + " nombre_representante_legal, apellido_representante_legal,telefono,"
+                + " correo, direccion, fecha_registro, fecha_vencimiento_deuda) "
                 + "VALUES ('" + String.valueOf(proveedor.getIdproveedores()) + "','"
                 + "" + proveedor.getRuc() + "', '"
                 + "" + proveedor.getRazon_social() + "', '"
                 + "" + proveedor.getTipoActividad() + "', '"
                 + "" + proveedor.getNombre_representante_legal() + "', '"
                 + "" + proveedor.getApellido_representante_legal() + "', '"
+                + "" + proveedor.getTelefono() + "','"
                 + "" + proveedor.getCorreo() + "','"
-                + ""+ proveedor.getTelefono() + "','"
-                + "" + proveedor.getDireccion() + "')";
+                + "" + proveedor.getDireccion() + "','"
+                + "" + utilidades.devolverFecha(proveedor.getFecha_registro()) + "','"
+                + "" + utilidades.devolverFecha(proveedor.getFecha_vencimiento_deuda()) + "')";
 
         try {
             //Es una instancia de la conexión previamente creada
@@ -78,12 +89,15 @@ public class Proveedorbd {
         boolean actualizar = false;
 
         //Código para editar solo el número de cedula según el idpersona
-        String sql = "UPDATE proveedores SET ruc= '" + persona.getRuc() + "',razon_social= '" + persona.getRazon_social() + ""
+        String sql = "UPDATE proveedores SET ruc= '" + persona.getRuc() + ""
+                + "',razon_social= '" + persona.getRazon_social() + ""
                 + "',tipo_actividad= '" + persona.getTipoActividad() + ""
                 + "', nombre_representante_legal= '" + persona.getNombre_representante_legal() + ""
                 + "',apellido_representante_legal= '" + persona.getApellido_representante_legal() + ""
-                + "',correo= '" + persona.getCorreo() + "',telefono= '" + persona.getTelefono() + ""
-                + "',direccion= '" + persona.getDireccion()+ ""
+                + "',telefono= '" + persona.getTelefono()+"',correo= '" + persona.getCorreo() +""
+                + "',direccion= '" + persona.getDireccion() + ""
+                + "', fecha_actualizacion= '" + utilidades.devolverFecha(persona.getFecha_actualizacion())+""
+                + "',fecha_vencimiento_deuda= '" + utilidades.devolverFecha(persona.getFecha_vencimiento_deuda()) + ""
                 + "'  WHERE (idproveedores=" + persona.getIdproveedores() + ")";
         try {
             Conexiónbd co = new Conexiónbd();
@@ -123,6 +137,7 @@ public class Proveedorbd {
                 c.setTelefono(rs.getString(7));
                 c.setCorreo(rs.getString(8));
                 c.setDireccion(rs.getString(9));
+                c.setFecha_vencimiento_deuda(rs.getDate("fecha_vencimiento_deuda"));
                 listaProveedores.add(c);
             }
             stm.close();
@@ -159,6 +174,7 @@ public class Proveedorbd {
                 c.setTelefono(rs.getString(7));
                 c.setCorreo(rs.getString(8));
                 c.setDireccion(rs.getString(9));
+                c.setFecha_vencimiento_deuda(rs.getDate("fecha_vencimiento_deuda"));
                 listaProveedores.add(c);
             }
             stm.close();
@@ -196,6 +212,7 @@ public class Proveedorbd {
                 c.setCorreo(rs.getString(7));
                 c.setTelefono(rs.getString(8));
                 c.setDireccion(rs.getString(9));
+                c.setFecha_vencimiento_deuda(rs.getDate("fecha_vencimiento_deuda"));
             }
             stm.close();
             rs.close();

@@ -7,6 +7,7 @@ package com.Istl.vistas;
 
 import com.Istl.modelos.Persona;
 import com.Istl.utilidades.Utilidades;
+import com.toedter.calendar.JDateChooser;
 import java.util.Date;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -26,11 +27,11 @@ public class GestionPersona {
     private JTextField txtCorreo;
     private JTextField txtTelefono;
     private JComboBox comboGenero;
+    private JDateChooser jDateFechaNacimiento;
     private Utilidades utilidades;
     private JFrame frameGestionContable;
 
-    public GestionPersona(JTextField txtCedula, JTextField txtNombres, JTextField txtApellidos, JTextField txtDireccion, JTextField txtCorreo,
-            JTextField txtTelefono, JComboBox comboGenero, Utilidades utilidades, JFrame frameGestionContable) {
+    public GestionPersona(JTextField txtCedula, JTextField txtNombres, JTextField txtApellidos, JTextField txtDireccion, JTextField txtCorreo, JTextField txtTelefono, JComboBox comboGenero, JDateChooser jDateFechaNacimiento, Utilidades utilidades, JFrame frameGestionContable) {
         this.txtCedula = txtCedula;
         this.txtNombres = txtNombres;
         this.txtApellidos = txtApellidos;
@@ -38,10 +39,12 @@ public class GestionPersona {
         this.txtCorreo = txtCorreo;
         this.txtTelefono = txtTelefono;
         this.comboGenero = comboGenero;
+        this.jDateFechaNacimiento = jDateFechaNacimiento;
         this.utilidades = utilidades;
         this.frameGestionContable = frameGestionContable;
     }
 
+    
     public JTextField getTxtCedula() {
         return txtCedula;
     }
@@ -98,6 +101,16 @@ public class GestionPersona {
         this.comboGenero = comboGenero;
     }
 
+    public JDateChooser getjDateFechaNacimiento() {
+        return jDateFechaNacimiento;
+    }
+
+    public void setjDateFechaNacimiento(JDateChooser jDateFechaNacimiento) {
+        this.jDateFechaNacimiento = jDateFechaNacimiento;
+    }
+    
+    
+
     public void limpiarCamposPersona() {
         txtCedula.setText("");
         txtNombres.setText("");
@@ -106,6 +119,7 @@ public class GestionPersona {
         txtCorreo.setText("");
         txtTelefono.setText("");
         comboGenero.setSelectedIndex(0);
+        jDateFechaNacimiento.setDate(null);
         txtCedula.requestFocus();
     }
 
@@ -154,6 +168,7 @@ public class GestionPersona {
         persona.setTelefono(txtTelefono.getText());
         persona.setCorreo(txtCorreo.getText());
         persona.setGenero(comboGenero.getSelectedIndex());
+        persona.setFecha_nacimiento(jDateFechaNacimiento.getDate());
          if (isEditar) {
             persona.setFecha_actualizacion(new Date());
         }else{

@@ -7,6 +7,8 @@ package com.Istl.vistas;
 
 import com.Istl.modelos.Proveedor;
 import com.Istl.utilidades.Utilidades;
+import com.toedter.calendar.JDateChooser;
+import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -25,12 +27,15 @@ public class GestionProveedor {
     private JTextField txtTelefonoProveedores;
     private JTextField txtCorrreoProveedores;
     private JTextField txtDireccionProveedores;
+    private JDateChooser jDateFechaVencimientoDeuda;
     private Utilidades utilidades;
     private JFrame frameGestionProveedor;
 
-    public GestionProveedor(JTextField txtRucProveedores, JTextField txtRazonSocialProveedores, JTextField txtTipoActividadProveedores,
-            JTextField txtNombreRepresentateLegalProveedores, JTextField txtApellidosRepresentateLegalProveedores, 
-            JTextField txtTelefonoProveedores, JTextField txtCorrreoProveedores, JTextField txtDireccionProveedores, Utilidades utilidades, JFrame frameGestionProveedor) {
+    public GestionProveedor(JTextField txtRucProveedores, JTextField txtRazonSocialProveedores, 
+            JTextField txtTipoActividadProveedores, JTextField txtNombreRepresentateLegalProveedores,
+            JTextField txtApellidosRepresentateLegalProveedores, JTextField txtTelefonoProveedores, 
+            JTextField txtCorrreoProveedores, JTextField txtDireccionProveedores, JDateChooser jDateFechaVencimientoDeuda,
+            Utilidades utilidades, JFrame frameGestionProveedor) {
         this.txtRucProveedores = txtRucProveedores;
         this.txtRazonSocialProveedores = txtRazonSocialProveedores;
         this.txtTipoActividadProveedores = txtTipoActividadProveedores;
@@ -38,10 +43,13 @@ public class GestionProveedor {
         this.txtApellidosRepresentateLegalProveedores = txtApellidosRepresentateLegalProveedores;
         this.txtTelefonoProveedores = txtTelefonoProveedores;
         this.txtCorrreoProveedores = txtCorrreoProveedores;
-        this.txtDireccionProveedores=  txtDireccionProveedores;
+        this.txtDireccionProveedores = txtDireccionProveedores;
+        this.jDateFechaVencimientoDeuda = jDateFechaVencimientoDeuda;
         this.utilidades = utilidades;
         this.frameGestionProveedor = frameGestionProveedor;
     }
+
+    
 
     public JTextField getTxtRucProveedores() {
         return txtRucProveedores;
@@ -125,6 +133,15 @@ public class GestionProveedor {
         this.frameGestionProveedor = frameGestionProveedor;
     }
 
+    public JDateChooser getjDateFechaVencimientoDeuda() {
+        return jDateFechaVencimientoDeuda;
+    }
+
+    public void setjDateFechaVencimientoDeuda(JDateChooser jDateFechaVencimientoDeuda) {
+        this.jDateFechaVencimientoDeuda = jDateFechaVencimientoDeuda;
+    }
+
+    
      public void limpiarCamposProveedor() {
 
         txtRucProveedores.setText("");
@@ -135,9 +152,10 @@ public class GestionProveedor {
         txtTelefonoProveedores.setText("");
         txtCorrreoProveedores.setText("");
         txtDireccionProveedores.setText("");
+        jDateFechaVencimientoDeuda.setDate(null);
 
     }
-    public Proveedor guardarEditar() {
+    public Proveedor guardarEditar(boolean isEditar) {
         if (txtRucProveedores.getText().isEmpty()) {
             JOptionPane.showMessageDialog(frameGestionProveedor, "El campo ruc no tiene datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
             txtRucProveedores.requestFocus();// Sirve para ubicar el cursor en un campo vacio.
@@ -175,7 +193,13 @@ public class GestionProveedor {
             txtCorrreoProveedores.requestFocus();
             return null;
         }
+          if (txtDireccionProveedores.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(frameGestionProveedor, "El campo dirección no tiene datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            txtDireccionProveedores.requestFocus();
+            return null;
+        }
         
+    
         Proveedor proveedor = new Proveedor();
         proveedor.setRuc(txtRucProveedores.getText());
         proveedor.setRazon_social(txtRazonSocialProveedores.getText());
@@ -185,6 +209,12 @@ public class GestionProveedor {
         proveedor.setTelefono(txtTelefonoProveedores.getText());
         proveedor.setCorreo(txtCorrreoProveedores.getText());
         proveedor.setDireccion(txtDireccionProveedores.getText());
+        proveedor.setFecha_vencimiento_deuda(jDateFechaVencimientoDeuda.getDate());
+        if (isEditar) {
+            proveedor.setFecha_actualizacion(new Date());
+        }else{
+            proveedor.setFecha_registro(new Date());
+        }
         return  proveedor;
     }
 

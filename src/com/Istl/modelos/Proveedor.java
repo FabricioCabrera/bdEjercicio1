@@ -1,6 +1,8 @@
 package com.Istl.modelos;
 
-import java.sql.Date;
+import java.util.Date;
+
+
 
 public class Proveedor {
 
@@ -14,10 +16,13 @@ public class Proveedor {
     private String correo;
     private String direccion;
     private Date fecha_registro;
+    private Date fecha_actualizacion;
+    private Date fecha_vencimiento_deuda;
 
     public Proveedor(int idproveedores, String ruc, String razon_social, String tipoActividad, 
             String nombre_representante_legal, String apellido_representante_legal, String telefono, 
-            String correo, String direccion, Date fecha_registro) {
+            String correo, String direccion, Date fecha_registro, Date fecha_actualizacion, 
+            Date fecha_vencimiento_deuda) {
         this.idproveedores = idproveedores;
         this.ruc = ruc;
         this.razon_social = razon_social;
@@ -28,7 +33,13 @@ public class Proveedor {
         this.correo = correo;
         this.direccion = direccion;
         this.fecha_registro = fecha_registro;
+        this.fecha_actualizacion = fecha_actualizacion;
+        this.fecha_vencimiento_deuda = fecha_vencimiento_deuda;
     }
+
+ 
+
+   
 
 
     public Proveedor(String ruc, String razon_social, String tipo_actividad, String nombre_representante_legal, 
@@ -132,6 +143,23 @@ public class Proveedor {
         this.fecha_registro = fecha_registro;
     }
 
+    public Date getFecha_actualizacion() {
+        return fecha_actualizacion;
+    }
+
+    public void setFecha_actualizacion(Date fecha_actualizacion) {
+        this.fecha_actualizacion = fecha_actualizacion;
+    }
+
+    public Date getFecha_vencimiento_deuda() {
+        return fecha_vencimiento_deuda;
+    }
+
+    public void setFecha_vencimiento_deuda(Date fecha_vencimiento_deuda) {
+        this.fecha_vencimiento_deuda = fecha_vencimiento_deuda;
+    }
+
+    
     
 
     @Override

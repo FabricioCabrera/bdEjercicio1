@@ -14,8 +14,9 @@ public class Persona {
     private Date Fecha_registro;
     private int genero;
     private Date Fecha_actualizacion;
+    private Date Fecha_nacimiento;
 
-    public Persona(int idpersona, String cedula, String nombres, String apellidos, String direccion, String correo, String telefono, Date Fecha_registro, int genero, Date Fecha_actualizacion) {
+    public Persona(int idpersona, String cedula, String nombres, String apellidos, String direccion, String correo, String telefono, Date Fecha_registro, int genero, Date Fecha_actualizacion, Date Fecha_nacimiento) {
         this.idpersona = idpersona;
         this.cedula = cedula;
         this.nombres = nombres;
@@ -26,7 +27,10 @@ public class Persona {
         this.Fecha_registro = Fecha_registro;
         this.genero = genero;
         this.Fecha_actualizacion = Fecha_actualizacion;
+        this.Fecha_nacimiento = Fecha_nacimiento;
     }
+
+    
 
 
     public Persona(String cedula, String nombres, String apellidos, String dirección, String correo, 
@@ -126,6 +130,14 @@ public class Persona {
 
     public void setFecha_actualizacion(Date Fecha_actualizacion) {
         this.Fecha_actualizacion = Fecha_actualizacion;
+    }
+
+    public Date getFecha_nacimiento() {
+        return Fecha_nacimiento;
+    }
+
+    public void setFecha_nacimiento(Date Fecha_nacimiento) {
+        this.Fecha_nacimiento = Fecha_nacimiento;
     }
 
    

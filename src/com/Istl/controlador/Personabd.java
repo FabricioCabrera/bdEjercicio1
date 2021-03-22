@@ -11,30 +11,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Personabd {
-    
+
     public Utilidades utilidades;
-    
-    public Personabd (){
+
+    public Personabd() {
         utilidades = new Utilidades();
     }
-    
 
     //Creamos el método para ingresar una persona
     public boolean CrearPersona(Persona persona) {
         Statement stm = null;
         Connection con = null;
+        String sql;
+        if (persona.getFecha_nacimiento() == null) {
+             sql = "INSERT INTO bdejercicio1.persona (idpersona,cedula, nombres, "
+                    + "apellidos, direccion, correo, telefono, fecha_registro, genero, fecha_nacimiento) "
+                    + "VALUES ('" + String.valueOf(persona.getIdpersona()) + "','"
+                    + "" + persona.getCedula() + "', '"
+                    + "" + persona.getNombres() + "', '"
+                    + "" + persona.getApellidos() + "', '"
+                    + "" + persona.getDireccion() + "', '"
+                    + "" + persona.getCorreo() + "', '"
+                    + "" + persona.getTelefono() + "', '"
+                    + "" + utilidades.devolverFecha(persona.getFecha_registro()) + "', '"
+                    + "" + persona.getGenero() + "', '"
+                    + "" + utilidades.devolverFecha(persona.getFecha_nacimiento()) + "')";
 
-        String sql = "INSERT INTO bdejercicio1.persona (idpersona,cedula, nombres, "
-                + "apellidos, direccion, correo, telefono, fecha_registro, genero) "
+        } else {
+
+        
+         sql = "INSERT INTO bdejercicio1.persona (idpersona,cedula, nombres, "
+                + "apellidos, direccion, correo, telefono, fecha_registro, genero, fecha_nacimiento) "
                 + "VALUES ('" + String.valueOf(persona.getIdpersona()) + "','"
                 + "" + persona.getCedula() + "', '"
                 + "" + persona.getNombres() + "', '"
                 + "" + persona.getApellidos() + "', '"
                 + "" + persona.getDireccion() + "', '"
-                + "" + persona.getCorreo() +"', '" 
-                + "" + persona.getTelefono() +"', '"
-                + "" + utilidades.devolverFecha(persona.getFecha_registro()) +"', '"
-                + "" + persona.getGenero()+ "')";
+                + "" + persona.getCorreo() + "', '"
+                + "" + persona.getTelefono() + "', '"
+                + "" + utilidades.devolverFecha(persona.getFecha_registro()) + "', '"
+                + "" + persona.getGenero() + "', '"
+                + "" + utilidades.devolverFecha(persona.getFecha_nacimiento()) + "')";
+    }
         try {
             Conexiónbd co = new Conexiónbd();
             con = co.Conectar();
@@ -76,10 +94,11 @@ public class Personabd {
         Connection con = null;
 
         //Código para editar solo el número de cédula según el idpersona
-        String sql = ("UPDATE persona SET cedula=" + edita.getCedula() + " , nombres='"+edita.getNombres()+ ""
-                + "', apellidos='"+edita.getApellidos()+"', direccion='"+edita.getDireccion()+""
-                + "' , correo='"+edita.getCorreo()+"' , telefono= '"+edita.getTelefono()+ ""
-                + "', genero= '"+edita.getGenero()+ "', fecha_actualizacion= '"+ utilidades.devolverFecha(edita.getFecha_actualizacion())+"'   WHERE (idpersona=" + edita.getIdpersona()+")");
+        String sql = ("UPDATE persona SET cedula=" + edita.getCedula() + " , nombres='" + edita.getNombres() + ""
+                + "', apellidos='" + edita.getApellidos() + "', direccion='" + edita.getDireccion() + ""
+                + "' , correo='" + edita.getCorreo() + "' , telefono= '" + edita.getTelefono() + ""
+                + "', genero= '" + edita.getGenero() + "', fecha_actualizacion= '" + utilidades.devolverFecha(edita.getFecha_actualizacion()) + ""
+                + "', fecha_nacimiento= '" + utilidades.devolverFecha(edita.getFecha_nacimiento()) + "'   WHERE (idpersona=" + edita.getIdpersona() + ")");
         try {
             Conexiónbd co = new Conexiónbd();
             con = co.Conectar();
@@ -117,7 +136,7 @@ public class Personabd {
                 c.setTelefono(rs.getString("telefono"));
                 //c.setFecha_registro(rs.getDate("fecha_registro"));
                 c.setGenero(rs.getInt("genero"));
-                //c.setFecha_actualizacion(rs.getDate("fecha_actualizacion"));
+                c.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
                 listaPersonas.add(c);
             }
             stm.close();
@@ -150,9 +169,8 @@ public class Personabd {
                 c.setDireccion(rs.getString("direccion"));
                 c.setCorreo(rs.getString("correo"));
                 c.setTelefono(rs.getString("telefono"));
-                c.setFecha_registro(rs.getDate("fecha_registro"));
                 c.setGenero(rs.getInt("genero"));
-                c.setFecha_actualizacion(rs.getDate("fecha_actualizacion"));
+                c.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
                 listaPersonas.add(c);
             }
             stm.close();
@@ -192,6 +210,7 @@ public class Personabd {
                 c.setFecha_registro(rs.getDate(8));
                 c.setGenero(rs.getInt(9));
                 c.setFecha_actualizacion(rs.getDate(10));
+                c.setFecha_nacimiento(rs.getDate(11));
             }
             stm.close();
             rs.close();
@@ -202,7 +221,7 @@ public class Personabd {
         return c;
     }
 
-    //Metodo para buscar una persona por cedula
+    //Metodo para buscar una persona por nombre
     public List<Persona> getPersonaNombre(String nombre) {
         Connection co = null;
         Statement stm = null;
@@ -226,6 +245,7 @@ public class Personabd {
                 c.setFecha_registro(rs.getDate(8));
                 c.setGenero(rs.getInt(9));
                 c.setFecha_actualizacion(rs.getDate(10));
+                c.setFecha_nacimiento(rs.getDate(11));
             }
             stm.close();
             rs.close();
