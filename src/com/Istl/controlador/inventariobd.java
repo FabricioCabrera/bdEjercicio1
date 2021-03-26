@@ -4,12 +4,19 @@ import java.sql.Connection;
 import java.sql.Statement;
 import com.Istl.conexión.Conexiónbd;
 import com.Istl.modelos.inventario;
+import com.Istl.utilidades.Utilidades;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class inventariobd {
+
+    public Utilidades utilidades;
+
+    public inventariobd() {
+        utilidades = new Utilidades();
+    }
 
     //Creamos el método para guardar un producto nuevo
     public boolean Crear(inventario producto) {
@@ -20,16 +27,19 @@ public class inventariobd {
         Connection con = null;
 
         String sql = "INSERT INTO `bdejercicio1`.`inventario` (`idinventario`, `codigo_pro`,`can_productos`, `descripcion`"
-                + ", `precio_compra_sin_iva`, `precio_compra_con_iva`, `precio_mayorista`,`precio_cliente_fijo`,`precio_cliente_normal`)"
+                + ", `precio_compra_sin_iva`, `precio_compra_con_iva`, `precio_mayorista`,`precio_cliente_fijo`,"
+                + "`precio_cliente_normal`, fecha_caducidad, fecha_registro)"
                 + "VALUES ('" + String.valueOf(producto.getIdinventario()) + "','"
                 + "" + producto.getCodigo_pro() + "','"
                 + "" + producto.getCan_productos() + "','"
                 + "" + producto.getDescripcion() + "','"
-                + "" + String.valueOf(producto.getPrecio_siniva())+ "','"
+                + "" + String.valueOf(producto.getPrecio_siniva()) + "','"
                 + "" + String.valueOf(producto.getPrecio_coniva()) + "','"
                 + "" + String.valueOf(producto.getPrecio_mayorista()) + "','"
                 + "" + String.valueOf(producto.getPrecio_clifijo()) + "','"
-                + "" + String.valueOf(producto.getPrecio_clinormal()) + "')";
+                + "" + String.valueOf(producto.getPrecio_clinormal()) + "','"
+                + "" + utilidades.devolverFecha(producto.getFecha_caducidad()) + "','"
+                + "" + utilidades.devolverFecha(producto.getFecha_registro()) + "')";
         try {
             //Es una instancia de la conexión previamente creada
             Conexiónbd co = new Conexiónbd();
@@ -81,9 +91,11 @@ public class inventariobd {
         String sql = "UPDATE inventario SET codigo_pro= '" + producto.getCodigo_pro() + "',can_productos= '"
                 + "" + producto.getCan_productos() + "',descripcion= '" + producto.getDescripcion() + ""
                 + "',precio_compra_sin_iva= '" + producto.getPrecio_siniva() + ""
-                + "',precio_compra_con_iva= '" + producto.getPrecio_coniva()+"',precio_mayorista= '"
-                + "" + producto.getPrecio_mayorista()+ "', precio_cliente_fijo= '" + producto.getPrecio_clifijo() + ""
+                + "',precio_compra_con_iva= '" + producto.getPrecio_coniva() + "',precio_mayorista= '"
+                + "" + producto.getPrecio_mayorista() + "', precio_cliente_fijo= '" + producto.getPrecio_clifijo() + ""
                 + "',precio_cliente_normal= '" + producto.getPrecio_clinormal() + ""
+                + "', fecha_caducidad= '" + utilidades.devolverFecha(producto.getFecha_caducidad()) + ""
+                + "', fecha_actualizacion= '" + utilidades.devolverFecha(producto.getFecha_actualizacion()) + ""
                 + "'  WHERE (idinventario=" + producto.getIdinventario() + ")";
         try {
             Conexiónbd co = new Conexiónbd();
@@ -123,6 +135,7 @@ public class inventariobd {
                 c.setPrecio_mayorista(rs.getDouble("precio_mayorista"));
                 c.setPrecio_clifijo(rs.getDouble("precio_cliente_fijo"));
                 c.setPrecio_clinormal(rs.getDouble("precio_cliente_normal"));
+                c.setFecha_caducidad(rs.getDate("fecha_caducidad"));
                 listaProductos.add(c);
             }
             stm.close();
@@ -150,7 +163,7 @@ public class inventariobd {
             stm = con.createStatement();
             rs = stm.executeQuery(sql);
             while (rs.next()) {
-               inventario c = new inventario();
+                inventario c = new inventario();
                 c.setIdinventario(rs.getInt(1));
                 c.setCodigo_pro(rs.getString(2));
                 c.setCan_productos(rs.getString(3));
@@ -160,6 +173,7 @@ public class inventariobd {
                 c.setPrecio_mayorista(rs.getDouble(7));
                 c.setPrecio_clifijo(rs.getDouble(8));
                 c.setPrecio_clinormal(rs.getDouble(9));
+                c.setFecha_caducidad(rs.getDate("fecha_caducidad"));
                 listaProductos.add(c);
             }
             stm.close();
@@ -197,6 +211,7 @@ public class inventariobd {
                 c.setPrecio_mayorista(rs.getDouble(7));
                 c.setPrecio_clifijo(rs.getDouble(8));
                 c.setPrecio_clinormal(rs.getDouble(9));
+                c.setFecha_caducidad(rs.getDate("fecha_caducidad"));
             }
             stm.close();
             rs.close();
@@ -207,4 +222,6 @@ public class inventariobd {
         }
         return c;
     }
+    
+
 }

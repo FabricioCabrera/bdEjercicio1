@@ -1,5 +1,7 @@
 package com.Istl.modelos;
 
+import java.util.Date;
+
 public class inventario {
 
     private int idinventario;
@@ -11,10 +13,11 @@ public class inventario {
     private double precio_mayorista;
     private double precio_clifijo;
     private double precio_clinormal;
+    private Date fecha_caducidad;
+    private Date fecha_registro;
+    private Date fecha_actualizacion;
 
-    public inventario(int idinventario, String codigo_pro, String can_productos, String descripcion, 
-            double precio_siniva, double precio_coniva, double precio_mayorista, 
-            double precio_clifijo, double precio_clinormal) {
+    public inventario(int idinventario, String codigo_pro, String can_productos, String descripcion, double precio_siniva, double precio_coniva, double precio_mayorista, double precio_clifijo, double precio_clinormal, Date fecha_caducidad, Date fecha_registro, Date fecha_actualizacion) {
         this.idinventario = idinventario;
         this.codigo_pro = codigo_pro;
         this.can_productos = can_productos;
@@ -24,7 +27,14 @@ public class inventario {
         this.precio_mayorista = precio_mayorista;
         this.precio_clifijo = precio_clifijo;
         this.precio_clinormal = precio_clinormal;
+        this.fecha_caducidad = fecha_caducidad;
+        this.fecha_registro = fecha_registro;
+        this.fecha_actualizacion = fecha_actualizacion;
     }
+
+   
+
+   
     
 
     
@@ -49,6 +59,7 @@ public class inventario {
     public inventario() {
     }
 
+    
     public int getIdinventario() {
         return idinventario;
     }
@@ -81,20 +92,20 @@ public class inventario {
         this.descripcion = descripcion;
     }
 
-    public double getPrecio_coniva() {
-        return precio_coniva;
-    }
-
-    public void setPrecio_coniva(double precio_coniva) {
-        this.precio_coniva = precio_coniva;
-    }
-
     public double getPrecio_siniva() {
         return precio_siniva;
     }
 
     public void setPrecio_siniva(double precio_siniva) {
         this.precio_siniva = precio_siniva;
+    }
+
+    public double getPrecio_coniva() {
+        return precio_coniva;
+    }
+
+    public void setPrecio_coniva(double precio_coniva) {
+        this.precio_coniva = precio_coniva;
     }
 
     public double getPrecio_mayorista() {
@@ -121,13 +132,34 @@ public class inventario {
         this.precio_clinormal = precio_clinormal;
     }
 
-  
- 
-   /* @Override
+    public Date getFecha_registro() {
+        return fecha_registro;
+    }
+
+    public void setFecha_registro(Date fecha_registro) {
+        this.fecha_registro = fecha_registro;
+    }
+
+    public Date getFecha_actualizacion() {
+        return fecha_actualizacion;
+    }
+
+    public void setFecha_actualizacion(Date fecha_actualizacion) {
+        this.fecha_actualizacion = fecha_actualizacion;
+    }
+
+    public Date getFecha_caducidad() {
+        return fecha_caducidad;
+    }
+
+    public void setFecha_caducidad(Date fecha_caducidad) {
+        this.fecha_caducidad = fecha_caducidad;
+    }
+       /* @Override
     public String toString() {
         return "inventario{" + "idinventario=" + idinventario + ", codigo_pro=" + codigo_pro + ", descripcion=" + descripcion + ", precios_compra=" + precio_coniva + ""
                 + ", precio_venta=" + precio_siniva + ", can_productos=" + can_productos + '}';
                 
     }*/
-    
+
 }
