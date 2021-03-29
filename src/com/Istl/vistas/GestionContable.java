@@ -1415,20 +1415,22 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
 
     private void txtcelulaorucnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcelulaorucnvActionPerformed
         personaEditarEliminar = new Persona();
-        controladorPersona.getPersonaCedula(txtcelulaorucnv.getText(), personaEditarEliminar);
-        jlbIdPersona.setText(String.valueOf(personaEditarEliminar.getIdpersona()));
-        txtcelulaorucnv.setText(personaEditarEliminar.getCedula());
-        txtnombrenv.setText(personaEditarEliminar.getNombres());
-        txtdireccionnv.setText(personaEditarEliminar.getDireccion());
-        txttelefononv.setText(personaEditarEliminar.getTelefono());
-        
-        txtproductonv.requestFocusInWindow();
+        controladorPersona.getPersonaCedula(txtcelulaorucnv.getText(),personaEditarEliminar);
+            jlbIdPersona.setText(String.valueOf(personaEditarEliminar.getIdpersona()));
+            txtcelulaorucnv.setText(personaEditarEliminar.getCedula());
+            txtnombrenv.setText(personaEditarEliminar.getNombres());
+            txtdireccionnv.setText(personaEditarEliminar.getDireccion());
+            txttelefononv.setText(personaEditarEliminar.getTelefono());
+
+            txtproductonv.requestFocusInWindow();
+
+
     }//GEN-LAST:event_txtcelulaorucnvActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         String fecha = utilidades.formatearFecha(jtxtFecha.getDate());
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // <editor-fold defaultstate="collapsed" desc="Main">
@@ -1485,7 +1487,6 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
 //            txtCedula.requestFocus();
 //        }
 //    }
-
     private void buscarPersona(String text) {
         String subSQL = "";
         switch (comboParametroBusqueda.getSelectedIndex()) {
