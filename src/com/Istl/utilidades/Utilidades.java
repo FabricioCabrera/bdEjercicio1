@@ -5,9 +5,10 @@
  */
 package com.Istl.utilidades;
 
-import  java.text.SimpleDateFormat ;
-import  java.time.LocalDate ;
-import  java.util.Date ;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+
 /**
  *
  * @author johnp
@@ -85,10 +86,33 @@ public class Utilidades {
         }
         return false;
     }
-    
-     public String devolverFecha(Date fecha) {
+
+    public String devolverFecha(Date fecha) {
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
         return f.format(fecha);
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Formatear fecha de Date a String, en formato (Corto o Largo)">
+    /**
+     * Proceso que permite el formateo de fecha corto. Parametros fecha y el
+     * tipo (Corto o Largo)
+     *
+     * @param fecha
+     * @return
+     */
+    public String formatearFecha(Date fecha) {
+        SimpleDateFormat formatoFecha;
+        String fecha_formateada;
+//        if (tipo.equals("Corto")) {
+        formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+        fecha_formateada = formatoFecha.format(fecha);
+        return fecha_formateada;
+//        } else {
+//            formatoFecha = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//            fecha_formateada = formatoFecha.format(fecha);
+//            return fecha_formateada;
+//        }
     }
+    //</editor-fold>
+
+}

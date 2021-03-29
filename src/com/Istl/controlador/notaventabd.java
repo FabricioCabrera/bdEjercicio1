@@ -3,23 +3,25 @@ package com.Istl.controlador;
 import java.sql.Connection;
 import java.sql.Statement;
 import com.Istl.conexión.Conexiónbd;
+import com.Istl.modelos.Persona;
 import com.Istl.modelos.inventario;
+import com.Istl.modelos.notaventa;
 import com.Istl.utilidades.Utilidades;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class inventariobd {
+public class notaventabd {
 
     public Utilidades utilidades;
 
-    public inventariobd() {
+    public notaventabd() {
         utilidades = new Utilidades();
     }
 
-    //Creamos el método para guardar un producto nuevo
-    public boolean Crear(inventario producto) {
+   /* //Creamos el método para guardar un producto nuevo
+    public boolean Crear(notaventa producto) {
         boolean registrar = false;
         //Interfaz de acceso a la base de datos
         Statement stm = null;
@@ -221,9 +223,7 @@ public class inventariobd {
             System.out.println("Error de clase buscar" + ex.getLocalizedMessage());
         }
         return c;
-    }
-    
-    
+    }*/
     
 
 }
