@@ -193,7 +193,7 @@ public class inventariobd {
         //Sentencia de JDBC para obtener valores de las base de datos
         ResultSet rs = null;
         inventario c = null;
-        String sql = "Select* from bdejercicio1.proveedores where ruc=" + cod;
+        String sql = "Select* from inventario where idinventario=" + cod;
         try {
             Conexiónbd co = new Conexiónbd();
             con = co.Conectar();
@@ -222,8 +222,41 @@ public class inventariobd {
         }
         return c;
     }
-    
-    
-    
+
+    public inventario buscar(String cod, inventario invent) {
+        //conexión con la base de datos
+        Connection con = null;
+        //Interfáz de acceso a la base de datos
+        Statement stm = null;
+        //Sentencia de JDBC para obtener valores de las base de datos
+        ResultSet rs = null;
+        String sql = "Select* from inventario where idinventario=" + cod;
+        try {
+            Conexiónbd co = new Conexiónbd();
+            con = co.Conectar();
+            stm = con.createStatement();
+            rs = stm.executeQuery(sql);
+
+            rs.next();
+            invent.setIdinventario(rs.getInt(1));
+            invent.setCodigo_pro(rs.getString(2));
+            invent.setCan_productos(rs.getString(3));
+            invent.setDescripcion(rs.getString(4));
+            invent.setPrecio_siniva(rs.getDouble(5));
+            invent.setPrecio_coniva(rs.getDouble(6));
+            invent.setPrecio_mayorista(rs.getDouble(7));
+            invent.setPrecio_clifijo(rs.getDouble(8));
+            invent.setPrecio_clinormal(rs.getDouble(9));
+            invent.setFecha_caducidad(rs.getDate("fecha_caducidad"));
+//            }
+            stm.close();
+            rs.close();
+            con.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error de clase buscar" + ex.getLocalizedMessage());
+        }
+        return invent;
+    }
 
 }

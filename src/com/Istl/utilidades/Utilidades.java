@@ -8,6 +8,8 @@ package com.Istl.utilidades;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import javax.swing.JTable;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -115,4 +117,29 @@ public class Utilidades {
     }
     //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Devolver el numero de columna">
+    /**
+     *
+     * @param jtbl
+     * @param nombreCampo
+     * @return
+     */
+    public int devolverNumColumna(JTable jtbl, String nombreCampo) {
+        TableColumn columTbl = jtbl.getColumn(nombreCampo);
+        return columTbl.getModelIndex();
+    }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Redondear decimales general">
+    /**
+     *
+     * @param numero
+     * @param decimales
+     * @return
+     */
+    public Double redondear(double numero, Integer decimales) {
+        Integer factor = (int) Math.pow(10, decimales);
+        return Math.rint(numero * factor) / factor;
+    }
+    //</editor-fold>
 }

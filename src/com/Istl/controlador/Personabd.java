@@ -210,7 +210,7 @@ public class Personabd {
             persona.setFecha_nacimiento(rs.getDate(11));
             
         } catch (SQLException e) {
-            System.out.println("Error:" + e.getMessage());
+            //System.out.println("Error:" + e.getMessage());
         } finally {
             try {
                 if (co != null) {
@@ -223,7 +223,7 @@ public class Personabd {
                     stm.close();
                 }
             } catch (SQLException e) {
-                System.out.println("Error: " + e.toString());
+                //System.out.println("Error: " + e.toString());
             }
         }
 //        return persona;

@@ -30,8 +30,6 @@ public class notaventa {
         this.tipo_pago = tipo_pago;
     }
 
-   
-
     public notaventa(int id_nota_venta) {
         this.id_nota_venta = id_nota_venta;
     }
@@ -86,8 +84,6 @@ public class notaventa {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
-    
 
     public Date getFecha_venta() {
         return fecha_venta;
