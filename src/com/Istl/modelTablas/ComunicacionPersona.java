@@ -7,6 +7,7 @@ package com.Istl.modelTablas;
 
 
 import com.Istl.modelos.Persona;
+import com.Istl.modelos.ProductoVenta;
 import com.Istl.modelos.Proveedor;
 import com.Istl.modelos.inventario;
 
@@ -15,6 +16,7 @@ public interface ComunicacionPersona {
     void clickPersona (Persona p);
     void clickProveedor (Proveedor p);
     void clickInventario (inventario p);
+    void clickNotaVenta (ProductoVenta p);
     
 }
     

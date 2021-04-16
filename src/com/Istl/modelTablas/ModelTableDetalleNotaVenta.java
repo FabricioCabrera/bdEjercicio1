@@ -1,6 +1,6 @@
 package com.Istl.modelTablas;
 
-import com.Istl.modelos.detalleNotaVenta;
+import com.Istl.modelos.ProductoVenta;
 import com.Istl.vistas.GestionContable;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -8,26 +8,21 @@ import javax.swing.table.AbstractTableModel;
 public class ModelTableDetalleNotaVenta extends AbstractTableModel {
 
     //Arreglo con el nombre de las columnas
-    public String[] m_colNames = {"Codigo", "Descripcion", "Cant", "Precio", " PrecioTotal"};
+    public String[] m_colNames = {"Cantidad", "Descripcion", "Subtotal", " Total"};
 
-    public List<detalleNotaVenta> detalleNotaVenta;
+    public List<ProductoVenta> producto_venta;
     private final GestionContable gcontable;
 
     //Cuando se vaya a editar
-    public ModelTableDetalleNotaVenta(List<detalleNotaVenta> detalleNotaVenta, GestionContable gcontable) {
-        this.detalleNotaVenta = detalleNotaVenta;
-        this.gcontable = gcontable;
-    }
-
-    //Cuando se crea un nuevo detalle
-    public ModelTableDetalleNotaVenta(GestionContable gcontable) {
+    public ModelTableDetalleNotaVenta(List<ProductoVenta> producto_venta, GestionContable gcontable) {
+        this.producto_venta = producto_venta;
         this.gcontable = gcontable;
     }
 
     //Determina el número de filas que tengo en mi tabla
     @Override
     public int getRowCount() {
-        return detalleNotaVenta.size();
+        return producto_venta.size();
     }
 
     //Determina el número de columnas que tengo en mi tabla
@@ -38,18 +33,17 @@ public class ModelTableDetalleNotaVenta extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        detalleNotaVenta producto = detalleNotaVenta.get(rowIndex);
+        ProductoVenta producto = producto_venta.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return producto.getIdInventario();
+                return producto.getCantidad();
             case 1:
                 return producto.getDescripcionInventario();
             case 2:
-                return producto.getCantidad();
+                return producto.getSubtotal();
             case 3:
-                return producto.getPrecioUnitario();
-            case 4:
                 return producto.getPrecioTotal();
+
         }
         return new String();
     }
@@ -62,16 +56,16 @@ public class ModelTableDetalleNotaVenta extends AbstractTableModel {
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-//        gcontable.clickInventario(detalleNotaVenta.get(rowIndex));
+        gcontable.clickNotaVenta(producto_venta.get(rowIndex));
         return super.isCellEditable(rowIndex, columnIndex); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public List<detalleNotaVenta> getDetalleNotaVenta() {
-        return detalleNotaVenta;
+    public List<ProductoVenta> getProducto_venta() {
+        return producto_venta;
     }
 
-    public void setDetalleNotaVenta(List<detalleNotaVenta> detalleNotaVenta) {
-        this.detalleNotaVenta = detalleNotaVenta;
+    public void setProducto_venta(List<ProductoVenta> producto_venta) {
+        this.producto_venta = producto_venta;
     }
 
 }

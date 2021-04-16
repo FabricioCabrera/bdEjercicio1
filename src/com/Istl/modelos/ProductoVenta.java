@@ -9,13 +9,13 @@ package com.Istl.modelos;
  *
  * @author Faby
  */
-public class detalleNotaVenta {
+public class ProductoVenta {
 
     private int idInventario;
-    private String descripcionInventario;
-    private int idNotaVenta;
+  
     private int cantidad;
-    private double precioUnitario;
+    private String descripcionInventario;
+    private double subtotal;
     private double precioTotal;
 
     public int getIdInventario() {
@@ -26,22 +26,6 @@ public class detalleNotaVenta {
         this.idInventario = idInventario;
     }
 
-    public String getDescripcionInventario() {
-        return descripcionInventario;
-    }
-
-    public void setDescripcionInventario(String descripcionInventario) {
-        this.descripcionInventario = descripcionInventario;
-    }
-
-    public int getIdNotaVenta() {
-        return idNotaVenta;
-    }
-
-    public void setIdNotaVenta(int idNotaVenta) {
-        this.idNotaVenta = idNotaVenta;
-    }
-
     public int getCantidad() {
         return cantidad;
     }
@@ -50,12 +34,20 @@ public class detalleNotaVenta {
         this.cantidad = cantidad;
     }
 
-    public double getPrecioUnitario() {
-        return precioUnitario;
+    public String getDescripcionInventario() {
+        return descripcionInventario;
     }
 
-    public void setPrecioUnitario(double precioUnitario) {
-        this.precioUnitario = precioUnitario;
+    public void setDescripcionInventario(String descripcionInventario) {
+        this.descripcionInventario = descripcionInventario;
+    }
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
     }
 
     public double getPrecioTotal() {
@@ -65,5 +57,7 @@ public class detalleNotaVenta {
     public void setPrecioTotal(double precioTotal) {
         this.precioTotal = precioTotal;
     }
+
+ 
 
 }

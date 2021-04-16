@@ -26,20 +26,20 @@ public class Gestionnotaventa {
     private JTextField txtnombrenv;
     private JTextField txtdireccionnv;
     private JTextField txttelefononv;
-    private JDateChooser jDateChooser1;
+    private JDateChooser jdatefechaventa;
     private JTextField txtproductonv;
     private JTextField txtcantidadproductonv;
 
     private Utilidades utilidades;
     private JFrame frameGestionContable;
 
-    public Gestionnotaventa(JTextField txtnotaventa, JTextField txtcelulaorucnv, JTextField txtnombrenv, JTextField txtdireccionnv, JTextField txttelefononv, JDateChooser jDateChooser1, JTextField txtproductonv, JTextField txtcantidadproductonv, Utilidades utilidades, JFrame frameGestionContable) {
+    public Gestionnotaventa(JTextField txtnotaventa, JTextField txtcelulaorucnv, JTextField txtnombrenv, JTextField txtdireccionnv, JTextField txttelefononv, JDateChooser jdatefechaventa, JTextField txtproductonv, JTextField txtcantidadproductonv, Utilidades utilidades, JFrame frameGestionContable) {
         this.txtnotaventa = txtnotaventa;
         this.txtcelulaorucnv = txtcelulaorucnv;
         this.txtnombrenv = txtnombrenv;
         this.txtdireccionnv = txtdireccionnv;
         this.txttelefononv = txttelefononv;
-        this.jDateChooser1 = jDateChooser1;
+        this.jdatefechaventa = jdatefechaventa;
         this.txtproductonv = txtproductonv;
         this.txtcantidadproductonv = txtcantidadproductonv;
         this.utilidades = utilidades;
@@ -87,11 +87,11 @@ public class Gestionnotaventa {
     }
 
     public JDateChooser getjDateChooser1() {
-        return jDateChooser1;
+        return jdatefechaventa;
     }
 
     public void setjDateChooser1(JDateChooser jDateChooser1) {
-        this.jDateChooser1 = jDateChooser1;
+        this.jdatefechaventa = jDateChooser1;
     }
 
     public JTextField getTxtproductonv() {
@@ -132,7 +132,7 @@ public class Gestionnotaventa {
         txtnombrenv.setText("");
         txtdireccionnv.setText("");
         txttelefononv.setText("");
-        jDateChooser1.setDate(null);
+        jdatefechaventa.setDate(null);
         txtproductonv.setText("");
         txtcantidadproductonv.setText("");
     }
@@ -181,15 +181,17 @@ public class Gestionnotaventa {
             return null;
         }*/
 
-//       notaventa venta = new notaventa();
-//        venta.setId_nota_venta(Integer.parseInt(txtnotaventa.getText()));
-//        venta.setPersona_id_persona(Integer.parseInt(txtcelulaorucnv.getText()));
-//        venta.setNombre(Integer.parseInt(txtnombrenv.getText()));
-//        venta.setFecha_venta(jDateChooser1.getDate());
-//        venta.setSub_total(Double.parseDouble(txtdireccionnv.getText()));
-//        venta.setIva(Double.parseDouble(txttelefononv.getText()));
-//        venta.setTotal(jDateChooser1.getDate());
-//        venta.setTipo_pago(Double.parseDouble(txtproductonv.getText()));
+       notaventa venta = new notaventa();
+        venta.setId_nota_venta(Integer.parseInt(txtnotaventa.getText()));
+        venta.setPersona_id_persona(Integer.parseInt(txtcelulaorucnv.getText()));
+        venta.setNombre(String.valueOf(txtnombrenv.getText()));
+        
+        venta.setSub_total(Double.parseDouble(txtdireccionnv.getText()));
+        venta.setIva(Double.parseDouble(txttelefononv.getText()));
+        venta.setFecha_venta(jdatefechaventa.getDate());
+        
+       /* venta.setTotal(jDateChooser1.getDate());
+        venta.setTipo_pago(Double.parseDouble(txtproductonv.getText()));*/
       return null;
     }
         

@@ -137,9 +137,16 @@ public class Utilidades {
      * @param decimales
      * @return
      */
-    public Double redondear(double numero, Integer decimales) {
+    /*public Double redondear(double numero, Integer decimales) {
         Integer factor = (int) Math.pow(10, decimales);
         return Math.rint(numero * factor) / factor;
+    }*/
+      public double dosDecimales(double entrada){
+        return Math.round(entrada*100.0)/100.0;
     }
+        /*for (int i = 0; i < detalleNotaVenta.getRowCount(); i++) {
+                subTotal += utilidades.redondear(Double.parseDouble(detalleNotaVenta.getValueAt(i,
+                        utilidades.devolverNumColumna(jTablenotaventa, "Total")).toString()), 2);*/
+
     //</editor-fold>
 }

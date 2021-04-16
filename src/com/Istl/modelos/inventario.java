@@ -17,7 +17,12 @@ public class inventario {
     private Date fecha_registro;
     private Date fecha_actualizacion;
 
-    public inventario(int idinventario, String codigo_pro, String can_productos, String descripcion, double precio_siniva, double precio_coniva, double precio_mayorista, double precio_clifijo, double precio_clinormal, Date fecha_caducidad, Date fecha_registro, Date fecha_actualizacion) {
+    
+    
+    
+    private int cantidadProductosVender;
+
+    public inventario(int idinventario, String codigo_pro, String can_productos, String descripcion, double precio_siniva, double precio_coniva, double precio_mayorista, double precio_clifijo, double precio_clinormal, Date fecha_caducidad, Date fecha_registro, Date fecha_actualizacion, int cantidadProductosVender) {
         this.idinventario = idinventario;
         this.codigo_pro = codigo_pro;
         this.can_productos = can_productos;
@@ -30,8 +35,10 @@ public class inventario {
         this.fecha_caducidad = fecha_caducidad;
         this.fecha_registro = fecha_registro;
         this.fecha_actualizacion = fecha_actualizacion;
+        this.cantidadProductosVender = cantidadProductosVender;
     }
-
+    
+    
    
 
    
@@ -60,6 +67,14 @@ public class inventario {
     }
 
     
+    
+       /* @Override
+    public String toString() {
+        return "inventario{" + "idinventario=" + idinventario + ", codigo_pro=" + codigo_pro + ", descripcion=" + descripcion + ", precios_compra=" + precio_coniva + ""
+                + ", precio_venta=" + precio_siniva + ", can_productos=" + can_productos + '}';
+                
+    }*/
+
     public int getIdinventario() {
         return idinventario;
     }
@@ -132,6 +147,14 @@ public class inventario {
         this.precio_clinormal = precio_clinormal;
     }
 
+    public Date getFecha_caducidad() {
+        return fecha_caducidad;
+    }
+
+    public void setFecha_caducidad(Date fecha_caducidad) {
+        this.fecha_caducidad = fecha_caducidad;
+    }
+
     public Date getFecha_registro() {
         return fecha_registro;
     }
@@ -148,18 +171,12 @@ public class inventario {
         this.fecha_actualizacion = fecha_actualizacion;
     }
 
-    public Date getFecha_caducidad() {
-        return fecha_caducidad;
+    public int getCantidadProductosVender() {
+        return cantidadProductosVender;
     }
 
-    public void setFecha_caducidad(Date fecha_caducidad) {
-        this.fecha_caducidad = fecha_caducidad;
+    public void setCantidadProductosVender(int cantidadProductosVender) {
+        this.cantidadProductosVender = cantidadProductosVender;
     }
-       /* @Override
-    public String toString() {
-        return "inventario{" + "idinventario=" + idinventario + ", codigo_pro=" + codigo_pro + ", descripcion=" + descripcion + ", precios_compra=" + precio_coniva + ""
-                + ", precio_venta=" + precio_siniva + ", can_productos=" + can_productos + '}';
-                
-    }*/
 
 }
